@@ -17,3 +17,16 @@ class General_knowledge
     response = JSON.parse(response)
     response["results"].sample
   end
+  def prep
+    preped= Hash.new
+       preped['ques'] = @values['question']
+    preped['answrs'] = @values["incorrect_answers"]
+    preped['answrs'].push(@values['correct_answer'])
+    preped['correct'] = @values['correct_answer']
+    # @preped['answer_list']= @values["incorrect_answers"]
+    # puts @preped
+     preped
+    
+  end
+
+end
