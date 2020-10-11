@@ -109,6 +109,25 @@ def check_win(bot, message)
     end 
   end
   
-
+# Check Wrong answer
+def wrong_answer(bot, message)
+    if  @question_object[:checked]== true
+      bot.api.send_message(chat_id: message.from.id, text: "You have already tried this question, try another one")
+    else 
+    # bot.api.delete_message( chat_id: message.from.id, message_id: message_id)
+    @user_score[:num_of_questions] += 1
+    bot.api.send_message(chat_id: message.from.id, text: ":( That is Wrong!")
+    bot.api.send_message(chat_id: message.from.id, text: "Your score is #{@user_score[:correct_ans]} from #{@user_score[:num_of_questions]}!")
+    @question_object[:checked]=true
+    kb=[
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: "Hit Me", callback_data: "hitme"),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: "I'm done", callback_data: "done")
+       ]
+       markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
+       bot.api.send_message(chat_id: message.from.id, text: "To continue, press the 'Hit Me' button. to quit press 'I'm done'", reply_markup:markup, one_time_keyboard: true
+      )
+    end
+  end  
+    
 
 end   
