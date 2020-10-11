@@ -23,8 +23,6 @@ class General_knowledge
     preped['answrs'] = @values["incorrect_answers"]
     preped['answrs'].push(@values['correct_answer'])
     preped['correct'] = @values['correct_answer']
-    # @preped['answer_list']= @values["incorrect_answers"]
-    # puts @preped
      preped
     
   end
