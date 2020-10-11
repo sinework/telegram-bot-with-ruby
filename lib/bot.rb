@@ -77,7 +77,16 @@ class Bot
       end
     end
   end  
-  
+#   general method which will display instruction to users
+  def general(bot, message)
+    kb=[
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: "Hit Me", callback_data: "hitme"),
+      Telegram::Bot::Types::InlineKeyboardButton.new(text: "I'm done", callback_data: "done")
+       ]
+       markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
+       bot.api.send_message(chat_id: message.from.id, text: "To play, press the 'Hit Me' button. to quit press 'I'm done'", reply_markup:markup, one_time_keyboard: true
+      )
+   end  
    
 
 
