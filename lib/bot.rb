@@ -2,7 +2,7 @@ require 'telegram/bot'
 require 'net/http'
 require 'json'
 
-require_relative './caller.rb'
+require_relative './general_knowledge.rb'
 class Bot
     attr_accessor :general, :token, :question_object, :dupe, :ans, :user_score, :user_answer
    def initialize
@@ -64,12 +64,10 @@ class Bot
           when '/play'
             kb = [
   
-              Telegram::Bot::Types::InlineKeyboardButton.new(text: 'General Knowledge', callback_data: 'general'),
-              Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Computers', callback_data: 'computer')
-  
+              Telegram::Bot::Types::InlineKeyboardButton.new(text: 'General Knowledge', callback_data: 'general')
             ]
             markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
-            bot.api.send_message(chat_id: message.chat.id, text: 'Choose a Category. I only have one category for you now \n  but more will be comming soon ', reply_markup: markup)
+            bot.api.send_message(chat_id: message.chat.id, text: 'Choose a Category. I only have one category for you now /n  but more will be comming soon ', reply_markup: markup)
           when '/stop'
             bot.api.send_message(chat_id: message.chat.id, text: 'Sorry to see you go :(')
           end
