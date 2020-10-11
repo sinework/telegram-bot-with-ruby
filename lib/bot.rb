@@ -1,4 +1,4 @@
-# rubocop :disable Metrics/MethodLength, Layout/LineLength
+# rubocop :disable Metrics/AbcSize
 require 'telegram/bot'
 require 'net/http'
 require 'json'
@@ -28,7 +28,7 @@ class Bot
 
           case message.data
           when 'general'
-            general(bot, message)
+            general_method(bot, message)
           when @ind
             # bot.api.delete_message( chat_id: message.from.id, message_id: message_id)
             check_win(bot, message)
@@ -52,7 +52,11 @@ class Bot
             bot.api.send_message(chat_id: message.from.id, text: question.to_s, reply_markup: markup, one_time_keyboard: true)
           when 'done'
 
-            bot.api.send_message(chat_id: message.from.id, text: " It was fun playing with you :) You've scored #{@user_score[:correct_ans]} from #{@user_score[:num_of_questions]}! \n hit /play to play again")
+            bot.api.send_message(
+              chat_id: message.from.id,
+              text: " It was fun playing with you :) You've scored #{@user_score[:correct_ans]}
+            from #{@user_score[:num_of_questions]}! \n hit /play to play again"
+            )
             @user_score[:correct_ans] = 0
             @user_score[:num_of_questions] = 0
             @question_object = {}
@@ -63,7 +67,9 @@ class Bot
         when Telegram::Bot::Types::Message
           case message.text
           when '/start'
-            bot.api.send_message(chat_id: message.chat.id, text: 'Hi there, my name is QuizMe, you can use me to test your knowledge in the topic of your choice. hit /play to start. You can also type /stop when ever you want to exit')
+            bot.api.send_message(chat_id: message.chat.id,
+                                 text: 'Hi there, my name is QuizMe, you can use me to test your knowledge in the topic of your choice.
+             hit /play to start. You can also type /stop when ever you want to exit')
           when '/play'
             kb = [
 
@@ -80,7 +86,7 @@ class Bot
   end
 
   #   general method which will display instruction to users
-  def general(bot, message)
+  def general_method(bot, message)
     kb = [
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Hit Me', callback_data: 'hitme'),
       Telegram::Bot::Types::InlineKeyboardButton.new(text: "I'm done", callback_data: 'done')
@@ -127,4 +133,4 @@ class Bot
     end
   end
 end
-# rubocop :enable Metrics/MethodLength, Layout/LineLength
+# rubocop :enable Metrics/AbcSize
