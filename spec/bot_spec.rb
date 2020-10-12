@@ -10,7 +10,7 @@ describe Bot do
   it 'Raises argument error when arguments are given' do
     expect { bot.general_method('value') }.to raise_error(ArgumentError)
   end
-  it 'Raises argument error when arguments are given' do
+  it 'Raises argument error when arguments are given when they are not supposed to be given' do
     expect { bot.wrong_answer('value') }.to raise_error(ArgumentError)
   end
 end
