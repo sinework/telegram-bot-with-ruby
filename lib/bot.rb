@@ -8,7 +8,7 @@ class Bot
   attr_accessor :general, :token, :question_object, :dupe, :ans, :user_score, :user_answer
 
   def initialize
-    @token = '1294334531:AAGenQ2e-OQlO-VdYs-Sywk2KI7saIxXAyM'
+    @token = 'TOKEN'
     @question_object = {}
     @dupe = []
     @ans = []
