@@ -1,6 +1,6 @@
 # telegram-bot-with-ruby(@QuizMeBot)
 
-![screenshot](./images/tel_bot.gif)
+![screenshot](./images/BotGif.gif)
 
 ## Preface
 
