@@ -1,4 +1,4 @@
-# telegram-bot-with-ruby(@QuizMeBot)
+# telegram--Quiz-bot-with-ruby(@QuizMeBot)
 
 ![screenshot](./images/BotGif.gif)
 
@@ -14,6 +14,7 @@ You can find the bot on telegram with the name "@QuizMeBot"
 
 - [Preface](#preface)
 - [Purpose](#purpose)
+- [Howtoplay](#Instructions)
 - [Features](#features)
 - [Presentations](#presentations)
 - [Built With](#built-with)
@@ -26,16 +27,28 @@ You can find the bot on telegram with the name "@QuizMeBot"
 
 ## Features
 
-- The bot currently lets a user play a quiz on General knowledge category with different difficult levels.
+- The bot currently lets a user play a quiz on General knowledge category with different difficult levels. The bot has an inline keyboard built into it. This keyboard can be used to
+  * Ask users to choose a category
+  * Ask user if the want more questions or if they want to stop
+  * Display multiple choices from which a user can pick a choice
 
-### Commands To Use
+### Commands To Use on the bot
 
 ```
-start
+/start
+ 
+ - Type /start to start the bot    
+```
+```
+/play
+ 
+ - Type /play to start playing the quiz   
 ```
 
-```console
-end
+```
+/end
+
+- Type /end to stop playing the game
 ```
 
 ## Built With
@@ -59,8 +72,11 @@ Or download it as a [Zip File](https://codeload.github.com/sinework/telegram-bot
 
 - Install Ruby in your system. To install Ruby, you can read the [Documentation](https://www.ruby-lang.org/en/documentation/installation/)
 
+### How To Get the Token
 - Navigate to your telegram account if you have one. Or create new telegram account.
 - Create a new bot with the help of BotFather. Use this documentation if you are facing challenges [New Bot](https://core.telegram.org/bots#6-botfather).
+- Type /newbot - to create a new bot
+- /setname - change a bot's name
 - Obtain your new bot's token.
 - Go to the Bot class and assign your token to `TOKEN` variable.
 

@@ -4,8 +4,6 @@ require 'json'
 
 require_relative './general_knowledge'
 class Bot
-  attr_accessor :general, :token, :question_object, :dupe, :ans, :user_score, :user_answer
-
   def initialize
     @token = '1294334531:AAGenQ2e-OQlO-VdYs-Sywk2KI7saIxXAyM'
     @question_object = {}
@@ -44,6 +42,8 @@ class Bot
 
   # case text
   #   general method which will display instruction to users
+  private
+
   def general_method(bot, message)
     kb = [
       Telegram::Bot::Types::InlineKeyboardButton.new(text: 'Hit Me', callback_data: 'hitme'),
@@ -55,6 +55,7 @@ class Bot
   end
 
   #  method to check if the user pressed the right choice
+
   def check_win(bot, message)
     if @question_object[:checked] == true
       bot.api.send_message(chat_id: message.from.id, text: 'You have already tried this question, try another one')
@@ -128,6 +129,8 @@ class Bot
     markup = Telegram::Bot::Types::InlineKeyboardMarkup.new(inline_keyboard: kb)
     bot.api.send_message(chat_id: message.from.id, text: question.to_s, reply_markup: markup, one_time_keyboard: true)
   end
+
+  # when recieving a callback from the keyboard
 
   def call_back(bot, message)
     case message.data

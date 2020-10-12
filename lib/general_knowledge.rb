@@ -9,14 +9,6 @@ class Generalknowledge
     @values = request
   end
 
-  def request
-    url = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple'
-    uri = URI(url)
-    response = Net::HTTP.get(uri)
-    response = JSON.parse(response)
-    response['results'].sample
-  end
-
   def prep
     preped = {}
     preped['ques'] = @values['question']
@@ -25,4 +17,14 @@ class Generalknowledge
     preped['correct'] = @values['correct_answer']
     preped
   end
+
+  private 
+  def request
+    url = 'https://opentdb.com/api.php?amount=10&category=9&type=multiple'
+    uri = URI(url)
+    response = Net::HTTP.get(uri)
+    response = JSON.parse(response)
+    response['results'].sample
+  end
+
 end
