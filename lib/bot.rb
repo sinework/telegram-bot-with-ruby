@@ -30,7 +30,6 @@ class Bot
           when 'general'
             general_method(bot, message)
           when @ind
-            # bot.api.delete_message( chat_id: message.from.id, message_id: message_id)
             check_win(bot, message)
 
           when 'hitme'
@@ -119,7 +118,6 @@ class Bot
     if @question_object[:checked] == true
       bot.api.send_message(chat_id: message.from.id, text: 'You have already tried this question, try another one')
     else
-      # bot.api.delete_message( chat_id: message.from.id, message_id: message_id)
       @user_score[:num_of_questions] += 1
       bot.api.send_message(chat_id: message.from.id, text: ':( That is Wrong!')
       bot.api.send_message(chat_id: message.from.id, text: "Your score is #{@user_score[:correct_ans]} from #{@user_score[:num_of_questions]}!")
