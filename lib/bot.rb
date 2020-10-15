@@ -5,7 +5,7 @@ require 'json'
 require_relative './general_knowledge'
 class Bot
   def initialize
-    @token = 'TOKEN'
+    @token = '1294334531:AAGenQ2e-OQlO-VdYs-Sywk2KI7saIxXAyM'
     @question_object = {}
     @dupe = []
     @ans = []
